@@ -1,4 +1,5 @@
-// Демо: запись в студию маникюра и педикюра (меню из трёх входов, услуги по группам)
+// Демо: запись в студию маникюра и педикюра (меню из трёх входов, услуги на двух вкладках)
+try { tg.setHeaderColor("#faf6f0"); tg.setBackgroundColor("#faf6f0"); } catch (e) {}
 const MASTERS = [
   { id: "any", name: "Любой специалист", role: "Ближайшее свободное время", icon: "✨" },
   { id: "mani", name: "Мастер маникюра", role: "Маникюр, наращивание, дизайн", icon: "💅" },
@@ -68,6 +69,7 @@ GROUPS.forEach((g) => g.items.forEach(([name, min, price]) => {
 const TIMES = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00"];
 
 let master = MASTERS[0];
+let tab = GROUPS[0].name;   // открытая вкладка: маникюр или педикюр
 const picked = new Set();
 const when = dateTimePicker({ daysBox: $("days"), timesBox: $("times"), times: TIMES });
 
@@ -142,18 +144,25 @@ function renderMasters() {
   });
 }
 
+function renderTabs() {
+  const box = $("tabs");
+  box.replaceChildren();
+  GROUPS.forEach((g) => {
+    const count = SERVICES.filter((s) => s.group === g.name && picked.has(s.id)).length;
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "tab" + (g.name === tab ? " is-active" : "");
+    btn.textContent = g.name + (count ? " · " + count : "");
+    btn.addEventListener("click", () => { tab = g.name; renderServices(); window.scrollTo(0, 0); });
+    box.append(btn);
+  });
+}
+
 function renderServices() {
+  renderTabs();
   const box = $("services");
   box.replaceChildren();
-  let lastGroup = "";
-  SERVICES.forEach((s) => {
-    if (s.group !== lastGroup) {
-      const h = document.createElement("div");
-      h.className = "group";
-      h.textContent = s.group;
-      box.append(h);
-      lastGroup = s.group;
-    }
+  SERVICES.filter((s) => s.group === tab).forEach((s) => {
     box.append(pickRow({
       name: s.name,
       sub: duration(s.min),
@@ -211,6 +220,7 @@ $("again").addEventListener("click", () => {
   $("form").reset();
   master = MASTERS[0];
   picked.clear();
+  tab = GROUPS[0].name;
   when.reset();
   renderMasters();
   renderServices();

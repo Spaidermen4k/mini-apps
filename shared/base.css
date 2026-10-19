@@ -217,3 +217,13 @@ body {
 /* Заголовок группы в длинном списке услуг */
 .group { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; margin: 14px 4px 2px; }
 .group:first-child { margin-top: 0; }
+
+/* Вкладки-переключатель (например, маникюр и педикюр) */
+.tabs {
+  position: sticky; top: 0; z-index: 5;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+  background: var(--card); border-radius: 14px; padding: 4px;
+  margin: 0 0 14px; box-shadow: 0 0 0 8px var(--bg);
+}
+.tab { border: 0; background: transparent; color: var(--muted); font: inherit; font-weight: 600; padding: 11px 8px; border-radius: 11px; }
+.tab.is-active { background: var(--accent); color: var(--accent-text); }

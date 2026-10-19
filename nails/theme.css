@@ -1,0 +1,32 @@
+/* Тёплая бежево-золотая палитра студии. Подключается после base.css и заменяет цвета темы Telegram. */
+:root {
+  --bg: #faf6f0;
+  --card: #ffffff;
+  --text: #3a2f28;
+  --muted: #8a7a6c;
+  --accent: #9c6b2e;
+  --accent-text: #ffffff;
+  --line: rgba(120, 90, 60, 0.2);
+  --danger: #c4493f;
+}
+
+.cover {
+  height: 150px;
+  align-items: center;
+  gap: 14px;
+  background: radial-gradient(circle at 15% 20%, rgba(226, 189, 134, 0.55), transparent 55%),
+              radial-gradient(circle at 90% 80%, rgba(210, 160, 110, 0.35), transparent 55%),
+              #f1e6d6;
+  color: var(--text);
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand img { width: 60px; height: 60px; border-radius: 16px; box-shadow: 0 6px 18px rgba(120, 80, 30, 0.25); }
+.brand__name { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
+.brand__tag { font-size: 13px; color: var(--muted); }
+
+.badge { background: rgba(156, 107, 46, 0.14); color: var(--accent); }
+.badge--ok { background: rgba(61, 140, 90, 0.14); color: #2f7a4d; }
+.message { box-shadow: 0 8px 24px rgba(120, 80, 30, 0.1); }
+.message__bot, .message__done { color: var(--accent); }
+.menu, .pick, .product { box-shadow: 0 1px 2px rgba(120, 80, 30, 0.08); }
+.input { background: #fff; }

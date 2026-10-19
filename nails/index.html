@@ -5,14 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Демо: запись на маникюр и педикюр</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
   <main class="app">
 
     <!-- Главное меню записи -->
     <section data-screen="menu">
-      <div class="cover">Демо · онлайн-запись</div>
+      <div class="cover">
+        <div class="brand">
+          <img src="logo.svg" alt="" width="60" height="60">
+          <div><div class="brand__name">Nail Studio</div><div class="brand__tag">Маникюр · Педикюр · Демо</div></div>
+        </div>
+      </div>
       <header class="head">
         <h1>Студия маникюра и педикюра</h1>
         <p>Выберите услуги, мастера и удобное время. Запись займёт минуту.</p>
@@ -60,7 +67,8 @@
     <!-- Выбор услуг -->
     <section data-screen="services" hidden>
       <button class="back" type="button" data-go="menu">‹ Назад</button>
-      <header class="head"><h1>Услуги</h1><p>Можно выбрать несколько.</p></header>
+      <header class="head"><h1>Услуги</h1><p>Можно выбрать несколько, в том числе из обеих вкладок.</p></header>
+      <div class="tabs" id="tabs"></div>
       <div class="pick-list" id="services"></div>
       <div class="total">
         <div class="total__inner">
