@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Демо: приём заявок</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- Экран 1: форма заявки -->
+    <section id="screenForm">
+      <header class="head">
+        <span class="badge">Демо</span>
+        <h1>Подбор квартиры</h1>
+        <p>Оставьте заявку, и менеджер свяжется с вами в течение 5 минут.</p>
+      </header>
+
+      <form class="form" id="form" autocomplete="off" novalidate>
+        <label class="field">
+          <span>Имя</span>
+          <input class="input" id="name" type="text" maxlength="40" placeholder="Как к вам обращаться" required>
+        </label>
+
+        <label class="field">
+          <span>Телефон</span>
+          <input class="input" id="phone" type="tel" inputmode="tel" maxlength="20" placeholder="+7 900 000-00-00" required>
+        </label>
+
+        <div class="field">
+          <span>Что нужно</span>
+          <div class="chips" id="goal"></div>
+        </div>
+
+        <label class="field">
+          <span>Бюджет</span>
+          <select class="input" id="budget">
+            <option value="">Не указан</option>
+            <option>до 5 млн ₽</option>
+            <option>5–9 млн ₽</option>
+            <option>9–15 млн ₽</option>
+            <option>от 15 млн ₽</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Комментарий</span>
+          <textarea class="input" id="comment" rows="3" maxlength="200" placeholder="Район, комнаты, сроки"></textarea>
+        </label>
+
+        <p class="error" id="error" hidden></p>
+        <button class="submit" type="submit">Отправить заявку</button>
+      </form>
+    </section>
+
+    <!-- Экран 2: что получит владелец бизнеса -->
+    <section id="screenDone" hidden>
+      <header class="head">
+        <span class="badge badge--ok">Готово</span>
+        <h1>Заявка отправлена</h1>
+        <p>Клиент видит это сообщение. А вот что в этот момент получает владелец бизнеса в Telegram:</p>
+      </header>
+
+      <div class="message" id="message" aria-live="polite"></div>
+
+      <p class="note">Демо-режим: данные никуда не отправляются, всё показано только на вашем телефоне.</p>
+
+      <div class="actions">
+        <a class="submit" id="contact" href="https://t.me/teeeIegram" target="_blank" rel="noopener">Хочу такое для моего бизнеса</a>
+        <button class="ghost" id="again" type="button">Заполнить ещё раз</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

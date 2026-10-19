@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Демо: онлайн-запись в салон</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="../shared/base.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- Главное меню записи -->
+    <section data-screen="menu">
+      <div class="cover">Демо · онлайн-запись</div>
+      <header class="head">
+        <h1>Beauty Studio</h1>
+        <p>Выберите, с чего начать: специалист, время или услуги.</p>
+      </header>
+
+      <div class="menu">
+        <button class="menu__row" type="button" data-go="master">
+          <span class="menu__icon">👩‍🎨</span>
+          <span class="menu__main"><span class="menu__title">Выбрать специалиста</span><span class="menu__value" id="vMaster" style="display:block"></span></span>
+          <span class="menu__arrow">›</span>
+        </button>
+        <button class="menu__row" type="button" data-go="when">
+          <span class="menu__icon">🗓️</span>
+          <span class="menu__main"><span class="menu__title">Выбрать дату и время</span><span class="menu__value" id="vWhen" style="display:block"></span></span>
+          <span class="menu__arrow">›</span>
+        </button>
+        <button class="menu__row" type="button" data-go="services">
+          <span class="menu__icon">💅</span>
+          <span class="menu__main"><span class="menu__title">Выбрать услуги</span><span class="menu__value" id="vServices" style="display:block"></span></span>
+          <span class="menu__arrow">›</span>
+        </button>
+      </div>
+
+      <form class="form" id="form" autocomplete="off" novalidate style="margin-top:20px">
+        <label class="field">
+          <span>Имя</span>
+          <input class="input" id="name" type="text" maxlength="40" placeholder="Как к вам обращаться">
+        </label>
+        <label class="field">
+          <span>Телефон</span>
+          <input class="input" id="phone" type="tel" inputmode="tel" maxlength="20" placeholder="+7 900 000-00-00">
+        </label>
+        <p class="error" id="error" hidden></p>
+        <button class="submit" type="submit">Записаться</button>
+      </form>
+    </section>
+
+    <!-- Выбор специалиста -->
+    <section data-screen="master" hidden>
+      <button class="back" type="button" data-go="menu">‹ Назад</button>
+      <header class="head"><h1>Специалист</h1></header>
+      <div class="pick-list" id="masters"></div>
+    </section>
+
+    <!-- Выбор услуг -->
+    <section data-screen="services" hidden>
+      <button class="back" type="button" data-go="menu">‹ Назад</button>
+      <header class="head"><h1>Услуги</h1><p>Можно выбрать несколько.</p></header>
+      <div class="pick-list" id="services"></div>
+      <div class="total">
+        <div class="total__inner">
+          <div class="total__sum" id="servicesSum">Ничего не выбрано</div>
+          <button class="submit" type="button" data-go="menu">Готово</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Выбор даты и времени -->
+    <section data-screen="when" hidden>
+      <button class="back" type="button" data-go="menu">‹ Назад</button>
+      <header class="head"><h1>Дата и время</h1></header>
+      <div class="form">
+        <div class="field"><span>День</span><div class="chips" id="days"></div></div>
+        <div class="field"><span>Время</span><div class="chips" id="times"></div></div>
+        <button class="submit" type="button" data-go="menu">Готово</button>
+      </div>
+    </section>
+
+    <!-- Результат -->
+    <section data-screen="done" hidden>
+      <header class="head">
+        <span class="badge badge--ok">Готово</span>
+        <h1>Вы записаны</h1>
+        <p>Клиент видит подтверждение. А вот что в этот момент получает администратор салона в Telegram:</p>
+      </header>
+
+      <div class="message" id="message" aria-live="polite"></div>
+      <p class="note">Демо-режим: данные никуда не отправляются, всё показано только на вашем телефоне.</p>
+
+      <div class="actions">
+        <a class="submit" href="https://t.me/teeeIegram" target="_blank" rel="noopener">Хочу такое для моего салона</a>
+        <button class="ghost" id="again" type="button">Записаться ещё раз</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../shared/core.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

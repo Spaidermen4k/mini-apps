@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Демо: заказ цветов</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="../shared/base.css">
+</head>
+<body>
+  <main class="app">
+
+    <section data-screen="form">
+      <header class="head">
+        <span class="badge">Демо</span>
+        <h1>Цветочная лавка</h1>
+        <p>Соберите заказ, мы привезём в удобное время.</p>
+      </header>
+
+      <form class="form" id="form" autocomplete="off" novalidate>
+        <div class="products" id="products"></div>
+
+        <div class="field"><span>Получение</span><div class="chips" id="delivery"></div></div>
+
+        <label class="field" id="addressField">
+          <span>Адрес доставки</span>
+          <input class="input" id="address" type="text" maxlength="80" placeholder="Улица, дом, квартира">
+        </label>
+
+        <div class="field"><span>День</span><div class="chips" id="days"></div></div>
+        <div class="field"><span>Время</span><div class="chips" id="times"></div></div>
+
+        <label class="field">
+          <span>Текст открытки</span>
+          <textarea class="input" id="card" rows="2" maxlength="100" placeholder="Необязательно"></textarea>
+        </label>
+        <label class="field">
+          <span>Имя</span>
+          <input class="input" id="name" type="text" maxlength="40" placeholder="Как к вам обращаться">
+        </label>
+        <label class="field">
+          <span>Телефон</span>
+          <input class="input" id="phone" type="tel" inputmode="tel" maxlength="20" placeholder="+7 900 000-00-00">
+        </label>
+
+        <p class="error" id="error" hidden></p>
+      </form>
+
+      <!-- Нижняя панель с итогом -->
+      <div class="total">
+        <div class="total__inner">
+          <div class="total__sum">Итого<b id="sum">0 ₽</b></div>
+          <button class="submit" type="submit" form="form">Заказать</button>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen="done" hidden>
+      <header class="head">
+        <span class="badge badge--ok">Готово</span>
+        <h1>Заказ принят</h1>
+        <p>Клиент видит подтверждение. А вот что в этот момент получает владелец магазина в Telegram:</p>
+      </header>
+
+      <div class="message" id="message" aria-live="polite"></div>
+      <p class="note">Демо-режим: данные никуда не отправляются, всё показано только на вашем телефоне.</p>
+
+      <div class="actions">
+        <a class="submit" href="https://t.me/teeeIegram" target="_blank" rel="noopener">Хочу такое для моего бизнеса</a>
+        <button class="ghost" id="again" type="button">Оформить ещё раз</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../shared/core.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

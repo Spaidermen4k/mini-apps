@@ -1,0 +1,119 @@
+/* Цвета берутся из темы Telegram, в обычном браузере используются запасные значения */
+:root {
+  --bg: var(--tg-theme-bg-color, #0e1319);
+  --card: var(--tg-theme-secondary-bg-color, #171e27);
+  --text: var(--tg-theme-text-color, #e8eef5);
+  --muted: var(--tg-theme-hint-color, #8b99aa);
+  --accent: var(--tg-theme-button-color, #3ddc97);
+  --accent-text: var(--tg-theme-button-text-color, #06140e);
+  --line: rgba(128, 140, 155, 0.25);
+  --danger: #ff6b6b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.app { max-width: 480px; margin: 0 auto; padding: 20px 16px 40px; }
+[hidden] { display: none !important; }
+
+.head { margin-bottom: 20px; }
+.head h1 { font-size: 26px; line-height: 1.2; margin: 10px 0 6px; letter-spacing: -0.01em; }
+.head p { color: var(--muted); }
+
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255, 159, 90, 0.16);
+  color: #ff9f5a;
+}
+.badge--ok { background: rgba(61, 220, 151, 0.16); color: #3ddc97; }
+
+/* Форма */
+.form { display: flex; flex-direction: column; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field > span { font-size: 14px; color: var(--muted); }
+
+.input {
+  width: 100%;
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 13px 14px;
+  font: inherit;
+  outline: none;
+  resize: none;
+  appearance: none;
+}
+.input:focus { border-color: var(--accent); }
+.input.is-bad { border-color: var(--danger); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  padding: 9px 16px;
+  border-radius: 999px;
+}
+.chip.is-active { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+
+.error { color: var(--danger); font-size: 14px; }
+
+.submit {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  border: 0;
+  background: var(--accent);
+  color: var(--accent-text);
+  font: inherit;
+  font-weight: 700;
+  padding: 15px;
+  border-radius: 12px;
+}
+.submit:active { opacity: 0.8; }
+
+.ghost {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  padding: 14px;
+  border-radius: 12px;
+}
+
+/* Сообщение, которое получает владелец */
+.message {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  animation: pop 0.45s ease-out both;
+}
+.message__head { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.message__bot { color: var(--accent); font-weight: 700; }
+.message__title { font-weight: 700; margin-bottom: 8px; }
+.message__list { list-style: none; font-size: 15px; margin-bottom: 12px; }
+.message__list span { color: var(--muted); }
+.message__done { font-size: 14px; color: var(--accent); border-top: 1px solid var(--line); padding-top: 10px; }
+
+.note { color: var(--muted); font-size: 13px; margin: 14px 2px 18px; }
+.actions { display: flex; flex-direction: column; gap: 10px; }
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}

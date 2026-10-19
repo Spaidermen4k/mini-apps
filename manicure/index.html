@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Демо: запись на маникюр</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="../shared/base.css">
+</head>
+<body>
+  <main class="app">
+
+    <section data-screen="form">
+      <header class="head">
+        <span class="badge">Демо</span>
+        <h1>Nail Studio</h1>
+        <p>Выберите услугу, мастера и удобное время.</p>
+      </header>
+
+      <form class="form" id="form" autocomplete="off" novalidate>
+        <div class="field"><span>Услуга</span><div class="chips" id="service"></div></div>
+        <div class="field"><span>Мастер</span><div class="chips" id="master"></div></div>
+        <div class="field"><span>День</span><div class="chips" id="days"></div></div>
+        <div class="field"><span>Время</span><div class="chips" id="times"></div></div>
+
+        <label class="field">
+          <span>Имя</span>
+          <input class="input" id="name" type="text" maxlength="40" placeholder="Как к вам обращаться">
+        </label>
+        <label class="field">
+          <span>Телефон</span>
+          <input class="input" id="phone" type="tel" inputmode="tel" maxlength="20" placeholder="+7 900 000-00-00">
+        </label>
+
+        <p class="error" id="error" hidden></p>
+        <button class="submit" type="submit">Записаться</button>
+      </form>
+    </section>
+
+    <section data-screen="done" hidden>
+      <header class="head">
+        <span class="badge badge--ok">Готово</span>
+        <h1>Вы записаны</h1>
+        <p>Клиент видит подтверждение. А вот что в этот момент получает владелец салона в Telegram:</p>
+      </header>
+
+      <div class="message" id="message" aria-live="polite"></div>
+      <p class="note">Демо-режим: данные никуда не отправляются, всё показано только на вашем телефоне.</p>
+
+      <div class="actions">
+        <a class="submit" href="https://t.me/teeeIegram" target="_blank" rel="noopener">Хочу такое для моего бизнеса</a>
+        <button class="ghost" id="again" type="button">Записаться ещё раз</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../shared/core.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
